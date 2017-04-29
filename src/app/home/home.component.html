@@ -1,39 +1,16 @@
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container" style="text-align: center">
+        <h1 class="text_h center header cd-headline letters type">
+            <span>In <b class="is-visible">solar</b> veritas</span>
+        </h1>
+        <span class="caption">Renewables that are ready to go.</span><br>
+        <button md-raised-button md-large-button color="button" style="margin-top: 70px; width: 160px !important; height: 60px; font-size:1.4em;">Use it</button>
+    </div>
+</div>
+
+
 <div>
-  <sebm-google-map [latitude]="lat" [longitude]="lng"  (mapClick)="mapClicked($event)">
-    <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
-  </sebm-google-map>
-
-  <hr>
-
-  <div>
-    For hot module reloading run
-    <pre>npm run start:hmr</pre>
-  </div>
-
-  <hr>
-
-  <div>
-    <h4>Local State</h4>
-
-    <form (ngSubmit)="submitState(localState.value)" autocomplete="off">
-
-      <input
-        [value]="localState.value"
-        (input)="localState.value = $event.target.value"
-        placeholder="Submit Local State to App State"
-        autofocus>
-
-      <button>Submit Value</button>
-    </form>
-    <!--
-        <input type="text" [value]="localState.value" (input)="localState.value = $event.target.value" autofocus>
-        Rather than wiring up two-way data-binding ourselves with [value] and (input)
-        we can use Angular's [(ngModel)] syntax
-        <input type="text" name="textInput" [(ngModel)]="localState.value" autofocus>
-      -->
-
-    <pre>this.localState = {{ localState | json }}</pre>
-
-  </div>
-
+    <sebm-google-map [latitude]="lat" [longitude]="lng" (mapClick)="mapClicked($event)">
+        <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+    </sebm-google-map>
 </div>

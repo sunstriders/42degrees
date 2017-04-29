@@ -28,9 +28,12 @@ import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
+import 'materialize-css/dist/js/materialize.min.js';
+import 'materialize-css/dist/css/materialize.min.css';
 import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './home/x-large';
+import { MaterializeModule } from 'angular2-materialize';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { Md2DatepickerModule }  from 'md2-datepicker';
 
@@ -71,7 +74,8 @@ type StoreType = {
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyDYB_Hw9wzrZ20A2bQRPlgWUVvq7nLQCRE'
         }),
-        RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
+        RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
+        MaterializeModule,
     ],
     providers: [ // expose our Services and Providers into Angular's dependency injection
         ENV_PROVIDERS,
