@@ -11,6 +11,14 @@ import { ActivatedRoute } from '@angular/router';
   template: `
     <h1>About</h1>
     <div>
+        <md-card>
+            <button md-button>All</button>
+            <button md-raised-button>Of</button>
+            <button md-raised-button color="primary">The</button>
+            <button md-raised-button color="accent">Buttons</button>
+        </md-card>
+    </div>
+    <div>
       For hot module reloading run
       <pre>npm run start:hmr</pre>
     </div>
