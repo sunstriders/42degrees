@@ -22,6 +22,8 @@ import { XLargeDirective } from './x-large';
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
+  public lat: number = 51.678418;
+  public lng: number = 7.809007;
   // Set our default values
   public localState = { value: '' };
   // TypeScript public modifiers
@@ -40,4 +42,9 @@ export class HomeComponent implements OnInit {
     this.appState.set('value', value);
     this.localState.value = '';
   }
+
+  public mapClicked($event: MouseEvent) {
+      this.lat = $event.coords.lat;
+      this.lng = $event.coords.lng;
+}
 }
