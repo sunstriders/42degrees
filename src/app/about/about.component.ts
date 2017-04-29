@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
     <h1>About</h1>
     <div>
         <md-slider min="1" max="5" step="0.5" [(ngModel)]="slider"></md-slider>
+        <md2-datepicker [(ngModel)]="date"></md2-datepicker>
         <md-card>
             <button md-button>All</button>
             <button md-raised-button>Of</button>
@@ -35,12 +36,14 @@ export class AboutComponent implements OnInit {
 
   public localState: any;
   public slider: number;
+  public date: Date;
   constructor(
     public route: ActivatedRoute
   ) {}
 
   public ngOnInit() {
     this.slider = 2;
+    this.date = new Date();
     this.route
       .data
       .subscribe((data: any) => {

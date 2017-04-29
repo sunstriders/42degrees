@@ -32,6 +32,7 @@ import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './home/x-large';
 import { AgmCoreModule } from 'angular2-google-maps/core';
+import { Md2DatepickerModule }  from 'md2-datepicker';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
@@ -66,6 +67,7 @@ type StoreType = {
         HttpModule,
         MaterialModule.forRoot(),
         BrowserAnimationsModule,
+        Md2DatepickerModule.forRoot(),
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyDYB_Hw9wzrZ20A2bQRPlgWUVvq7nLQCRE'
         }),
