@@ -22,6 +22,8 @@ import { XLargeDirective } from './x-large';
 export class HomeComponent implements OnInit {
   public lat: number = 51.678418;
   public lng: number = 7.809007;
+  public planet: String;
+  public collectorType: String;
   // Set our default values
   public localState = { value: '' };
   // TypeScript public modifiers

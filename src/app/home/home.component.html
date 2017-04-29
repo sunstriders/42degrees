@@ -11,12 +11,36 @@
 <div style="text-align: center">
     <h4>Choose planet where you live</h4>
 
+    <md-button-toggle-group #group="mdButtonToggleGroup" [(ngModel)]="planet">
+        <md-button-toggle value="earth">
+            <img style="height: 15em; width: 15em;" src="./../../styles/Earth2.png"/>
+        </md-button-toggle>
+        <md-button-toggle value="mars">
+            <img style="height: 15em; width: 15em;" src="./../../styles/Mars2.png"/>
+        </md-button-toggle>
+    </md-button-toggle-group>
+
     <h4>Choose your location</h4>
     <sebm-google-map [latitude]="lat" [longitude]="lng" (mapClick)="mapClicked($event)">
         <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
     </sebm-google-map>
 
     <h4>Choose collector</h4>
+
+    <md-button-toggle-group #group="mdButtonToggleGroup" [(ngModel)]="collectorType">
+        <md-button-toggle value="fixed">
+        <img style="height: 15em; width: 15em;" src="http://www.iowaenergycenter.org/wp-content/themes/iowa-energy-center/images/fixed-collector-active.svg"/>
+    </md-button-toggle>
+        <md-button-toggle value="asimuth">
+            <img style="height: 15em; width: 15em;" src="http://www.iowaenergycenter.org/wp-content/themes/iowa-energy-center/images/north-south-collector.svg"/>
+        </md-button-toggle>
+        <md-button-toggle value="vertical">
+            <img style="height: 15em; width: 15em;" src="http://www.iowaenergycenter.org/wp-content/themes/iowa-energy-center/images/east-west-collector.svg"/>
+        </md-button-toggle>
+        <md-button-toggle value="twoAxis">
+            <img style="height: 15em; width: 15em;" src="http://www.iowaenergycenter.org/wp-content/themes/iowa-energy-center/images/2-axis-collector.svg"/>
+        </md-button-toggle>
+    </md-button-toggle-group>
 
     <h4>Choose Date</h4>
 
