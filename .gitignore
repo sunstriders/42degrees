@@ -1,0 +1,6 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea/
+/frontend/.bin/
+/frontend/node_modules/
+/frontend/dll/
+/frontend/dist/
