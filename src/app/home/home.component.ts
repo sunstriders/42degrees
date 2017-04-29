@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
     this.localState.value = '';
   }
 
-  public mapClicked($event: MouseEvent) {
+  public mapClicked($event: any ) {
       this.lat = $event.coords.lat;
       this.lng = $event.coords.lng;
 }
