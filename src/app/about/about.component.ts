@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
   template: `
     <h1>About</h1>
     <div>
+        <md-slider min="1" max="5" step="0.5" [(ngModel)]="slider"></md-slider>
         <md-card>
             <button md-button>All</button>
             <button md-raised-button>Of</button>
@@ -33,11 +34,13 @@ import { ActivatedRoute } from '@angular/router';
 export class AboutComponent implements OnInit {
 
   public localState: any;
+  public slider: number;
   constructor(
     public route: ActivatedRoute
   ) {}
 
   public ngOnInit() {
+    this.slider = 2;
     this.route
       .data
       .subscribe((data: any) => {
