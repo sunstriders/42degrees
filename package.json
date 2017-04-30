@@ -91,7 +91,8 @@
     "typescript": "^2.3.2",
     "zone.js": "~0.8.5",
     "materialize-css": "^0.98.2",
-    "angular2-materialize": "^14.0.0"
+    "angular2-materialize": "^14.0.0",
+    "moment": "^2.18.1"
   },
   "devDependencies": {
     "@angular/compiler-cli": "~4.0.3",
