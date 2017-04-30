@@ -32,7 +32,6 @@ import 'materialize-css/dist/js/materialize.min.js';
 import 'materialize-css/dist/css/materialize.min.css';
 import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
-import { XLargeDirective } from './home/x-large';
 import { MaterializeModule } from 'angular2-materialize';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { Md2DatepickerModule }  from 'md2-datepicker';
@@ -64,7 +63,6 @@ type StoreType = {
         AboutComponent,
         HomeComponent,
         NoContentComponent,
-        XLargeDirective,
     ],
     imports: [ // import Angular's modules
         BrowserModule,
