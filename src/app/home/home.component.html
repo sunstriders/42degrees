@@ -42,15 +42,15 @@
         </md-button-toggle>
     </md-button-toggle-group>
 
-    <span *ngIf="azimuth>-1">
-        <h5>Azimuth</h5>
-        <md-slider min="0" max="180" step="1" [(ngModel)]="azimuth"></md-slider> {{azimuth}}
-    </span>
+    <div style="height: 48px;">
+        <span *ngIf="azimuth>-1">
+            Azimuth: <md-slider min="0" max="180" step="1" [(ngModel)]="azimuth"></md-slider> {{azimuth}}
+        </span>
 
-    <span *ngIf="attitude>-1">
-        <h5>Tilt</h5>
-        <md-slider min="0" max="90" step="1" [(ngModel)]="attitude"></md-slider> {{attitude}}
-    </span>
+        <span *ngIf="attitude>-1">
+            Tilt: <md-slider min="0" max="90" step="1" [(ngModel)]="attitude"></md-slider> {{attitude}}
+        </span>
+    </div>
 
     <h4>Choose Date</h4>
 
