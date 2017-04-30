@@ -6,6 +6,7 @@ import { AppState } from '../app.service';
 import { Title } from './title';
 import { XLargeDirective } from './x-large';
 import { PVService } from '../apiService';
+import {SelectModule} from "./solarModule";
 
 @Component({
     // The selector is what angular internally uses
@@ -29,6 +30,8 @@ export class HomeComponent implements OnInit {
     public azimuth: number = 45;
     public attitude: number = 45;
     public date: Date = new Date();
+    public moduleNumber = 0;
+    public selectModule:SelectModule = new SelectModule();
     public energy: number = null;
     public loading: boolean = false;
     // Set our default values
@@ -56,7 +59,7 @@ export class HomeComponent implements OnInit {
             20,
             this.attitude,
             this.azimuth,
-            1,
+            this.moduleNumber,
             this.collectorType);
         if (!this.validateInput()) {
             return;
