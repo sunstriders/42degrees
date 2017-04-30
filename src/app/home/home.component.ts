@@ -25,10 +25,10 @@ export class HomeComponent implements OnInit {
     public lat: number = 53.66670708625179;
     public lng: number = 23.895263671875;
     public planet: String;
-    public collectorType: String;
-    public azimuth: number = -1;
-    public attitude: number = -1;
-    public date: Date;
+    public collectorType: number = 0;
+    public azimuth: number = 45;
+    public attitude: number = 45;
+    public date: Date = new Date();
     public energy: number = null;
 
     // Set our default values
@@ -50,7 +50,13 @@ export class HomeComponent implements OnInit {
     }
 
     public calculate() {
-        const result = this.pvService.getPv(this.lat, this.lng, 20, 20, 20, 1, 1);
+        const result = this.pvService.getPv(this.lat,
+            this.lng,
+            20,
+            this.attitude,
+            this.azimuth,
+            1,
+            this.collectorType);
         if (!this.validateInput()) {
             return;
         }

@@ -28,35 +28,33 @@
     <h4>Choose collector</h4>
 
     <md-button-toggle-group #group="mdButtonToggleGroup" [(ngModel)]="collectorType">
-        <md-button-toggle value="fixed">
-        <img (click)="choosedAngles(-1,-1)" style="height: 15em; width: 15em;" src="http://www.iowaenergycenter.org/wp-content/themes/iowa-energy-center/images/fixed-collector-active.svg"/>
+        <md-button-toggle value="0">
+        <img (click)="choosedAngles(0,0)" style="height: 15em; width: 15em;" src="http://www.iowaenergycenter.org/wp-content/themes/iowa-energy-center/images/fixed-collector.svg"/>
     </md-button-toggle>
-        <md-button-toggle value="asimuth">
-            <img (click)="choosedAngles(1,-1)" style="height: 15em; width: 15em;" src="http://www.iowaenergycenter.org/wp-content/themes/iowa-energy-center/images/north-south-collector.svg"/>
+        <md-button-toggle value="2">
+            <img (click)="choosedAngles(0,-1)" style="height: 15em; width: 15em;" src="http://www.iowaenergycenter.org/wp-content/themes/iowa-energy-center/images/north-south-collector.svg"/>
         </md-button-toggle>
-        <md-button-toggle value="vertical">
-            <img (click)="choosedAngles(-1,1)" style="height: 15em; width: 15em;" src="http://www.iowaenergycenter.org/wp-content/themes/iowa-energy-center/images/east-west-collector.svg"/>
+        <md-button-toggle value="3">
+            <img (click)="choosedAngles(-1,0)" style="height: 15em; width: 15em;" src="http://www.iowaenergycenter.org/wp-content/themes/iowa-energy-center/images/east-west-collector.svg"/>
         </md-button-toggle>
-        <md-button-toggle value="twoAxis">
-            <img (click)="choosedAngles(1,1)" style="height: 15em; width: 15em;" src="http://www.iowaenergycenter.org/wp-content/themes/iowa-energy-center/images/2-axis-collector.svg"/>
+        <md-button-toggle value="4">
+            <img (click)="choosedAngles(-1,-1)" style="height: 15em; width: 15em;" src="http://www.iowaenergycenter.org/wp-content/themes/iowa-energy-center/images/2-axis-collector.svg"/>
         </md-button-toggle>
     </md-button-toggle-group>
+
+    <span *ngIf="azimuth>-1">
+        <h5>Azimuth</h5>
+        <md-slider min="0" max="180" step="1" [(ngModel)]="azimuth"></md-slider> {{azimuth}}
+    </span>
+
+    <span *ngIf="attitude>-1">
+        <h5>Attitude</h5>
+        <md-slider min="0" max="180" step="1" [(ngModel)]="attitude"></md-slider> {{attitude}}
+    </span>
 
     <h4>Choose Date</h4>
 
     <md2-datepicker style="margin: auto; width:500px;" [(ngModel)]="date"></md2-datepicker>
-
-    <h4 *ngIf="azimuth>=0||attitude>=0">Choose Angle</h4>
-
-    <div *ngIf="azimuth>=0">
-    <h5>Angle</h5>
-    <md-slider min="0" max="180" step="1" [(ngModel)]="azimuth"></md-slider> {{azimuth}}
-    </div>
-
-    <div *ngIf="attitude>=0">
-    <h5>Attitude</h5>
-    <md-slider min="0" max="180" step="1" [(ngModel)]="attitude"></md-slider> {{attitude}}
-    </div>
 
     <button md-raised-button md-large-button color="warn" style="margin-top: 70px; width: 160px !important; height: 60px; font-size:1.4em;" (click)="calculate()">Calculate</button>
 
