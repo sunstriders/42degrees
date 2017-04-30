@@ -52,10 +52,7 @@
         </span>
     </div>
 
-    <h4>Choose Date</h4>
-
-    <md2-datepicker style="margin: auto; width:500px;" [(ngModel)]="date"></md2-datepicker>
-
+    <p>Choose Solar Module Type</p>
     <div style="margin: auto;">
         <md-select placeholder="Solar module" [(ngModel)]="moduleNumber">
             <md-option *ngFor="let module of selectModule.modules" [value]="module.value">
@@ -63,6 +60,10 @@
             </md-option>
         </md-select>
     </div>
+
+    <h4>Choose Date</h4>
+
+    <md2-datepicker style="margin: auto; width:500px;" [(ngModel)]="date"></md2-datepicker>
 
     <button md-raised-button md-large-button color="warn" style="margin-top: 70px; width: 160px !important; height: 60px; font-size:1.4em;" (click)="calculate()">Calculate</button>
 

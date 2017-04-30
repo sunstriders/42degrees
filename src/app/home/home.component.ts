@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit {
             20,
             this.attitude,
             this.azimuth,
-            1,
+            this.moduleNumber,
             this.collectorType);
         if (!this.validateInput()) {
             return;
