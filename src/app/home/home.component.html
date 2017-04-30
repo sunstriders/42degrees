@@ -4,7 +4,7 @@
             <span>In <b class="is-visible">solar</b> veritas</span>
         </h1>
         <span class="caption">Renewables that are ready to go.</span><br>
-        <a pageScroll [pageScrollOffset]="0" [pageScrollDuration]="2000" href="#chooseCollector">
+        <a pageScroll [pageScrollOffset]="0" [pageScrollDuration]="1500" href="#chooseCollector">
             <button md-raised-button md-large-button color="button" style="margin-top: 70px; width: 160px !important; height: 60px; font-size:1.4em;">Use it</button>
         </a>
             <button md-raised-button md-large-button color="primary" style="margin-top: 70px; width: 160px !important; height: 60px; font-size:1.4em;" (click)="aboutUsClick()">About Us</button>
@@ -66,8 +66,9 @@
 
     <md2-datepicker style="margin: auto; width:500px;" [(ngModel)]="date"></md2-datepicker>
 
-    <button md-raised-button md-large-button color="warn" style="margin-top: 70px; width: 160px !important; height: 60px; font-size:1.4em;" (click)="calculate()">Calculate</button>
-
+    <a pageScroll [pageScrollOffset]="0" [pageScrollDuration]="1500" href="#result">
+        <button md-raised-button md-large-button color="warn" style="margin-top: 70px; width: 160px !important; height: 60px; font-size:1.4em;" (click)="calculate()">Calculate</button>
+    </a>
     <div *ngIf="energy!=null" id="result">
         <h4>You have {{energy|number:'1.2-2'}} Watts of energy on {{date|date:'dd.MM.yyyy'}}</h4>
 
