@@ -2,12 +2,15 @@ import {
     Component,
     OnInit
 } from '@angular/core';
-import { MdSnackBarModule } from '@angular/material';
+import { MdDialog, MdSnackBarModule } from '@angular/material';
 import { AppState } from '../app.service';
 import { Title } from './title';
 import { XLargeDirective } from './x-large';
 import { PVService } from '../apiService';
 import { SelectModule } from './solarModule';
+import { AboutUsDialogComponent } from '../about-us/about-us.component';
+import { Todo } from "../todos";
+import { MyTodo } from "../mytodos";
 
 @Component({
     // The selector is what angular internally uses
@@ -31,18 +34,36 @@ export class HomeComponent implements OnInit {
     public azimuth: number = 45;
     public attitude: number = 45;
     public date: Date = new Date();
-    public square:number = 1;
+    public square: number = 1;
     public moduleNumber = 0;
     public selectModule: SelectModule = new SelectModule();
     public energy: number = null;
     public loading: boolean = false;
+
+    public toDos: Array<Todo> = [
+        new Todo("fen", 30),
+        new Todo("plita", 50),
+        new Todo("fen", 30),
+        new Todo("plita", 50),
+        new Todo("fen", 30),
+        new Todo("plita", 50),
+        new Todo("fen", 30),
+        new Todo("plita", 50),
+        new Todo("fen", 30),
+        new Todo("plita", 50),
+    ];
+    public myTodos: Array<MyTodo> = new Array(0);
+    public usedEnergy: number = 0;
+    public remainEnergy: number = 1500;
+
     // Set our default values
     public localState = {value: ''};
     // TypeScript public modifiers
     constructor(public appState: AppState,
                 public title: Title,
                 private pvService: PVService,
-                private snackbar: MdSnackBarModule) {
+                private snackbar: MdSnackBarModule,
+                private dialog: MdDialog) {
     }
 
     public ngOnInit() {
@@ -55,6 +76,17 @@ export class HomeComponent implements OnInit {
         this.localState.value = '';
     }
 
+    public useItClick() {
+        // ignored
+    }
+
+    public aboutUsClick() {
+        let dialogRef = this.dialog.open(AboutUsDialogComponent);
+        dialogRef.afterClosed().subscribe( () => {
+           // ignored
+        });
+
+    }
     public calculate() {
         this.loading = true;
         const result = this.pvService.getPv(this.lat,
@@ -70,6 +102,7 @@ export class HomeComponent implements OnInit {
         result.subscribe((response: any) => {
             this.energy = this.pvService.getEnergyForDay(response, this.date) * this.square;
             this.loading = false;
+            this.remainEnergy = this.energy;
             setTimeout( () => {
                 const element = document.querySelector('#result');
                 if (element) {
@@ -87,6 +120,32 @@ export class HomeComponent implements OnInit {
     public mapClicked($event: any) {
         this.lat = $event.coords.lat;
         this.lng = $event.coords.lng;
+    }
+
+    public addTodo(todo: Todo) {
+        let myTodo = new MyTodo(todo, 10);
+        this.myTodos.push(myTodo);
+        this.usedEnergy = myTodo.sumWatts + this.usedEnergy;
+        this.remainEnergy = this.remainEnergy - myTodo.sumWatts;
+    }
+
+    public deleteTodo(todo: MyTodo) {
+        let index: number = this.myTodos.indexOf(todo);
+        if (index !== -1) {
+            this.myTodos.splice(index, 1);
+        }
+        this.usedEnergy = this.usedEnergy - todo.sumWatts;
+        this.remainEnergy = this.remainEnergy + todo.sumWatts;
+    }
+
+    public changeMyTodo(todo: MyTodo) {
+        let index: number = this.myTodos.indexOf(todo);
+        this.usedEnergy = this.usedEnergy - todo.sumWatts;
+        this.remainEnergy = this.remainEnergy + todo.sumWatts;
+        todo.sumWatts = todo.watts / 60 * todo.minutes;
+        this.myTodos[index] = todo;
+        this.usedEnergy = this.usedEnergy + todo.sumWatts;
+        this.remainEnergy = this.remainEnergy - todo.sumWatts;
     }
 
     private validateInput() {

@@ -1,4 +1,4 @@
-import {Todo} from './todos';
+import { Todo } from './todos';
 
 export class MyTodo extends Todo {
     public minutes: number;

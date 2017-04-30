@@ -40,12 +40,14 @@ import { DataTableModule } from 'angular2-datatable';
 import '../styles/styles.scss';
 import '../styles/headings.css';
 import { PVService } from './apiService';
+import { AboutUsDialogComponent } from './about-us/about-us.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
     ...APP_RESOLVER_PROVIDERS,
     AppState,
     PVService,
+    AboutUsDialogComponent,
 ];
 
 type StoreType = {
@@ -58,12 +60,13 @@ type StoreType = {
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
 @NgModule({
-    bootstrap: [AppComponent],
+    bootstrap: [AppComponent, AboutUsDialogComponent],
     declarations: [
         AppComponent,
         AboutComponent,
         HomeComponent,
         NoContentComponent,
+        AboutUsDialogComponent,
     ],
     imports: [ // import Angular's modules
         BrowserModule,
