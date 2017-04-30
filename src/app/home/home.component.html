@@ -58,6 +58,6 @@
     <md-slider min="0" max="180" step="1" [(ngModel)]="attitude"></md-slider> {{attitude}}
     </div>
 
-    <button md-raised-button md-large-button color="warn" style="margin-top: 70px; width: 160px !important; height: 60px; font-size:1.4em;">Calculate</button>
+    <button md-raised-button md-large-button color="warn" style="margin-top: 70px; width: 160px !important; height: 60px; font-size:1.4em;" (click)="calculate()">Calculate</button>
 </div>
 

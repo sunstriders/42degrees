@@ -28,18 +28,19 @@ export class HomeComponent implements OnInit {
   public collectorType: String;
   public azimuth: number = -1;
   public attitude: number = -1;
+  public date: Date;
 
   // Set our default values
   public localState = { value: '' };
   // TypeScript public modifiers
   constructor(
     public appState: AppState,
-    public title: Title
+    public title: Title,
+    private pvService:PVService,
   ) {}
 
   public ngOnInit() {
-    console.log('hello `Home` component');
-    // this.title.getData().subscribe(data => this.data = data);
+    //ignored
   }
 
   public submitState(value: string) {
@@ -52,6 +53,7 @@ export class HomeComponent implements OnInit {
     const result = this.pvService.getPv(this.lat, this.lng, 20, 20, 20, 1, 1);
     result.subscribe((response: any) => {
       console.log(response);
+      console.log(this.date);
     });
   }
   public choosedAngles(azimuth: number, attitude: number)
@@ -60,6 +62,13 @@ export class HomeComponent implements OnInit {
     this.attitude = attitude;
   }
 
+  private validateInput() {
+    if (!this.date) {
+        alert("Choose correct date");
+        return false;
+    }
+    return true;
+  }
   public mapClicked($event: any ) {
       this.lat = $event.coords.lat;
       this.lng = $event.coords.lng;
