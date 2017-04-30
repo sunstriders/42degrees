@@ -4,7 +4,9 @@
             <span>In <b class="is-visible">solar</b> veritas</span>
         </h1>
         <span class="caption">Renewables that are ready to go.</span><br>
-        <button md-raised-button md-large-button color="button" style="margin-top: 70px; width: 160px !important; height: 60px; font-size:1.4em;">Use it</button>
+        <a pageScroll [pageScrollOffset]="0" [pageScrollDuration]="2000" href="#chooseCollector">
+            <button md-raised-button md-large-button color="button" style="margin-top: 70px; width: 160px !important; height: 60px; font-size:1.4em;">Use it</button>
+        </a>
     </div>
 </div>
 
@@ -61,11 +63,10 @@
         </md-select>
     </div>
 
-    <p>Input Solar Panel Square</p>
+    <p>Enter Solar Panel Area (m^2) </p>
     <div style="margin: auto">
         <md-input-container>
-            <input mdInput placeholder="Battery Square" [(ngModel)] = "square"/>
-            <md-hint align="end">m^2</md-hint>
+            <input mdInput placeholder="Battery Area" [(ngModel)] = "square"/>
         </md-input-container>
     </div>
 

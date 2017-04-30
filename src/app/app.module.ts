@@ -40,6 +40,7 @@ import { DataTableModule } from 'angular2-datatable';
 import '../styles/styles.scss';
 import '../styles/headings.css';
 import { PVService } from './apiService';
+import {Ng2PageScrollModule} from "ng2-page-scroll/ng2-page-scroll";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -71,6 +72,7 @@ type StoreType = {
         HttpModule,
         MaterialModule.forRoot(),
         BrowserAnimationsModule,
+        Ng2PageScrollModule.forRoot(),
         Md2DatepickerModule.forRoot(),
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyDYB_Hw9wzrZ20A2bQRPlgWUVvq7nLQCRE'
