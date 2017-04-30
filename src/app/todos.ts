@@ -1,5 +1,5 @@
 export class Todo {
-    public name: String;
+    public name: string;
     public watts: number;
 
     constructor( name: string, watts: number ) {

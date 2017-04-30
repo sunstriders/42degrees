@@ -1,16 +1,16 @@
 import {
-  Component,
-  OnInit
+    Component,
+    OnInit
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {Todo} from '../todos';
-import {MyTodo} from '../mytodos';
-import {MdDialog, MdDialogRef} from '@angular/material';
+import { Todo } from '../todos';
+import { MyTodo } from '../mytodos';
+import { MdDialog, MdDialogRef } from '@angular/material';
 
 @Component({
-  selector: 'about',
-  styles: [`
-  `],
+    selector: 'about',
+    styles: [`
+    `],
     templateUrl: './about.component.html'
 })
 export class AboutComponent implements OnInit {
@@ -31,13 +31,12 @@ export class AboutComponent implements OnInit {
     public usedEnergy: number = 0;
     public remainEnergy: number = 1500;
 
-  constructor(
-    public route: ActivatedRoute,
-    public dialog: MdDialog
-  ) {}
+    constructor(public route: ActivatedRoute,
+                public dialog: MdDialog) {
+    }
 
     public ngOnInit() {
-      // ignored
+        // ignored
     };
 
     public addTodo(todo: Todo) {
@@ -45,7 +44,7 @@ export class AboutComponent implements OnInit {
         this.myTodos.push(myTodo);
         this.usedEnergy = myTodo.sumWatts + this.usedEnergy;
         this.remainEnergy = this.remainEnergy - myTodo.sumWatts;
-  }
+    }
 
     public deleteTodo(todo: MyTodo) {
         let index: number = this.myTodos.indexOf(todo);

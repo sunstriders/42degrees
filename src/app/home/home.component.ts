@@ -9,8 +9,8 @@ import { XLargeDirective } from './x-large';
 import { PVService } from '../apiService';
 import { SelectModule } from './solarModule';
 import { AboutUsDialogComponent } from '../about-us/about-us.component';
-import { Todo } from "../todos";
-import { MyTodo } from "../mytodos";
+import { Todo } from '../todos';
+import { MyTodo } from '../mytodos';
 
 @Component({
     // The selector is what angular internally uses
@@ -40,19 +40,18 @@ export class HomeComponent implements OnInit {
     public energy: number = null;
     public loading: boolean = false;
 
-    public toDos: Array<Todo> = [
-        new Todo("fen", 30),
-        new Todo("plita", 50),
-        new Todo("fen", 30),
-        new Todo("plita", 50),
-        new Todo("fen", 30),
-        new Todo("plita", 50),
-        new Todo("fen", 30),
-        new Todo("plita", 50),
-        new Todo("fen", 30),
-        new Todo("plita", 50),
+    public toDos: Todo[] = [
+        new Todo('Hugs with a robot', 300),
+        new Todo('Invent a cure for cancer', 500),
+        new Todo('Watch cartoons', 80),
+        new Todo('Destroy humanity', 240000),
+        new Todo('Play with Useless Box', 26),
+        new Todo('Quick grow potato (1 kg)', 600),
+        new Todo('Get sense of a life', 250),
+        new Todo('Play XBox 42', 650),
+        new Todo('Play PS7', 680)
     ];
-    public myTodos: Array<MyTodo> = new Array(0);
+    public myTodos: MyTodo[] = new Array(0);
     public usedEnergy: number = 0;
     public remainEnergy: number = 1500;
 
@@ -87,6 +86,7 @@ export class HomeComponent implements OnInit {
         });
 
     }
+
     public calculate() {
         this.loading = true;
         const result = this.pvService.getPv(this.lat,
