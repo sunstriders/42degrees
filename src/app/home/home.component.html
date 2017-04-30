@@ -70,14 +70,14 @@
         <button md-raised-button md-large-button color="warn" style="margin-top: 70px; width: 160px !important; height: 60px; font-size:1.4em;" (click)="calculate()">Calculate</button>
     </a>
     <div *ngIf="energy!=null" id="result">
-        <h4>You have {{energy|number:'1.2-2'}} Watts of energy on {{date|date:'dd.MM.yyyy'}}</h4>
+        <h4>You have {{energy|number:'1.2-2'}} Watts*hours of energy on {{date|date:'dd.MM.yyyy'}}</h4>
 
         <div *ngIf="remainEnergy >= 0" class="container">
-            <h5 style="display: inline">Remain energy </h5><h5 style="display: inline">{{remainEnergy| number:'1.2-2'}} watts</h5><h5 style="display: inline">, used energy </h5><h5 style="display: inline">{{usedEnergy| number:'1.2-2'}}</h5><h5 style="display: inline"> for day.</h5>
+            <h5 style="display: inline">Remain energy </h5><h5 style="display: inline">{{remainEnergy| number:'1.2-2'}} watts*hours</h5><h5 style="display: inline">, used energy </h5><h5 style="display: inline">{{usedEnergy| number:'1.2-2'}}</h5><h5 style="display: inline"> watts*hours for day.</h5>
         </div>
 
         <div *ngIf="remainEnergy < 0" class="container" style="color: red">
-            <h5 style="display: inline">You will spend too much energy! Excess will be </h5><h5 style="display: inline">{{-remainEnergy| number:'1.2-2'}} watts</h5>
+            <h5 style="display: inline">You will spend too much energy! Excess will be </h5><h5 style="display: inline">{{-remainEnergy| number:'1.2-2'}} watts*hours</h5>
         </div>
 
         <div class="container row">
@@ -88,7 +88,7 @@
                         <mfDefaultSorter by="name">Name</mfDefaultSorter>
                     </th>
                     <th style="width: 20%">
-                        <mfDefaultSorter by="watts">Power Consumption (Watts per hour)</mfDefaultSorter>
+                        <mfDefaultSorter by="watts">Power Consumption (Watts)</mfDefaultSorter>
                     </th>
                 </tr>
                 </thead>

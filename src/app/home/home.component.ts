@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
         new Todo('Destroy humanity', 240000),
         new Todo('Play with Useless Box', 26),
         new Todo('Quick grow potato (1 kg)', 600),
-        new Todo('Get sense of a life', 250),
+        new Todo('Find sense of a life', 2500),
         new Todo('Play XBox 42', 650),
         new Todo('Play PS7', 680)
     ];
