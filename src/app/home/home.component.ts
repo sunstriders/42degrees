@@ -24,7 +24,7 @@ import { PVService } from '../apiService';
 export class HomeComponent implements OnInit {
     public lat: number = 53.66670708625179;
     public lng: number = 23.895263671875;
-    public planet: String;
+    public planet: String = 'earth';
     public collectorType: number = 0;
     public azimuth: number = 45;
     public attitude: number = 45;
