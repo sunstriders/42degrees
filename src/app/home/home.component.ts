@@ -26,14 +26,15 @@ export class HomeComponent implements OnInit {
   public lng: number = 23.895263671875;
   public planet: String;
   public collectorType: String;
+  public azimuth: number = -1;
+  public attitude: number = -1;
 
-    // Set our default values
+  // Set our default values
   public localState = { value: '' };
   // TypeScript public modifiers
   constructor(
     public appState: AppState,
-    public title: Title,
-    private pvService: PVService,
+    public title: Title
   ) {}
 
   public ngOnInit() {
@@ -52,6 +53,11 @@ export class HomeComponent implements OnInit {
     result.subscribe((response: any) => {
       console.log(response);
     });
+  }
+  public choosedAngles(azimuth: number, attitude: number)
+  {
+    this.azimuth = azimuth;
+    this.attitude = attitude;
   }
 
   public mapClicked($event: any ) {
