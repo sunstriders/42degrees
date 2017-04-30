@@ -18,6 +18,15 @@
         <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
     </sebm-google-map>
 
+    <p>Choose Solar Module Type</p>
+    <div style="margin: auto;">
+        <md-select placeholder="Solar module" [(ngModel)]="moduleNumber">
+            <md-option *ngFor="let module of selectModule.modules" [value]="module.value">
+                {{ module.name }}
+            </md-option>
+        </md-select>
+    </div>
+
     <h4 id="chooseCollector">Choose collector</h4>
 
     <md-button-toggle-group #group="mdButtonToggleGroup" [(ngModel)]="collectorType">
@@ -45,15 +54,6 @@
         </span>
     </div>
 
-    <p>Choose Solar Module Type</p>
-    <div style="margin: auto;">
-        <md-select placeholder="Solar module" [(ngModel)]="moduleNumber">
-            <md-option *ngFor="let module of selectModule.modules" [value]="module.value">
-                {{ module.name }}
-            </md-option>
-        </md-select>
-    </div>
-
     <p>Enter Solar Panel Area (m^2) </p>
     <div style="margin: auto">
         <md-input-container>
@@ -73,7 +73,7 @@
         <h4>You have {{energy|number:'1.2-2'}} Watts of energy on {{date|date:'dd.MM.yyyy'}}</h4>
 
         <div *ngIf="remainEnergy >= 0" class="container">
-            <h5 style="display: inline">Remain energy </h5><h5 style="display: inline">{{remainEnergy| number:'1.2-2'}} watts</h5><h5 style="display: inline">, used energy </h5><h5 style="display: inline">{{usedEnergy| number:'1.2-2'}}</h5><h5 style="display: inline">, for day.</h5>
+            <h5 style="display: inline">Remain energy </h5><h5 style="display: inline">{{remainEnergy| number:'1.2-2'}} watts</h5><h5 style="display: inline">, used energy </h5><h5 style="display: inline">{{usedEnergy| number:'1.2-2'}}</h5><h5 style="display: inline"> for day.</h5>
         </div>
 
         <div *ngIf="remainEnergy < 0" class="container" style="color: red">
