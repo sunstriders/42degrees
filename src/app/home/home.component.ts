@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
     public azimuth: number = 45;
     public attitude: number = 45;
     public date: Date = new Date();
+    public square:number = 1;
     public moduleNumber = 0;
     public selectModule:SelectModule = new SelectModule();
     public energy: number = null;
@@ -65,7 +66,7 @@ export class HomeComponent implements OnInit {
             return;
         }
         result.subscribe((response: any) => {
-            this.energy = this.pvService.getEnergyForDay(response, this.date);
+            this.energy = this.pvService.getEnergyForDay(response, this.date) * this.square;
             this.loading = false;
             setTimeout( () => {
                 const element = document.querySelector('#result');

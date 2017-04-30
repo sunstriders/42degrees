@@ -8,7 +8,7 @@
     </div>
 </div>
 
-<div style="text-align: center">
+<div id="center"style="text-align: center">
     <h4>Choose planet where you live</h4>
 
     <md-button-toggle-group #group="mdButtonToggleGroup" [(ngModel)]="planet">
@@ -61,6 +61,14 @@
         </md-select>
     </div>
 
+    <p>Input Solar Panel Square</p>
+    <div style="margin: auto">
+        <md-input-container>
+            <input mdInput placeholder="Battery Square" [(ngModel)] = "square"/>
+        </md-input-container>
+    </div>
+
+
     <h4>Choose Date</h4>
 
     <md2-datepicker style="margin: auto; width:500px;" [(ngModel)]="date"></md2-datepicker>
@@ -68,7 +76,7 @@
     <button md-raised-button md-large-button color="warn" style="margin-top: 70px; width: 160px !important; height: 60px; font-size:1.4em;" (click)="calculate()">Calculate</button>
 
     <div *ngIf="energy!=null" id="result">
-        <h4>You have {{energy|number:'1.2-2'}} kW of energy on {{date|date:'dd.MM.yyyy'}}</h4>
+        <h4>You have {{energy|number:'1.2-2'}} Watt of energy on {{date|date:'dd.MM.yyyy'}}</h4>
     </div>
     <md-progress-spinner *ngIf="loading" style="margin:auto; position: fixed;top: 0;left: 0;bottom: 0; right: 0;" mode="indeterminate"></md-progress-spinner>
 </div>
