@@ -2,6 +2,7 @@ import {
     Component,
     OnInit
 } from '@angular/core';
+import { MdSnackBarModule } from '@angular/material';
 import { AppState } from '../app.service';
 import { Title } from './title';
 import { XLargeDirective } from './x-large';
@@ -40,7 +41,8 @@ export class HomeComponent implements OnInit {
     // TypeScript public modifiers
     constructor(public appState: AppState,
                 public title: Title,
-                private pvService: PVService) {
+                private pvService: PVService,
+                private snackbar: MdSnackBarModule) {
     }
 
     public ngOnInit() {
