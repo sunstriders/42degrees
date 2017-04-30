@@ -56,8 +56,7 @@ export class HomeComponent implements OnInit {
         }
         result.subscribe((response: any) => {
             console.log(response);
-            const energyForDate = this.pvService.getEnergyForDay(response, this.date);
-            console.log(energyForDate);
+            this.energy = this.pvService.getEnergyForDay(response, this.date);
         });
     }
 
