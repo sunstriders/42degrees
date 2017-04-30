@@ -3,7 +3,7 @@
  */
 
 
-import { Injectable } from '@angular/core';
+import {Component, Injectable} from '@angular/core';
 import {Http, Response, URLSearchParams, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -24,7 +24,7 @@ export class PVService {
      * @param azimuth Azimuth angle (degrees) (0 - 360)
      * @param module_type Module type  0-Standard, 1-Premium, 2-Thin film
      * @param array_type Array type (0, 1, 2, 3, 4)
-     * @returns {Observable<R>}
+     * @returns {Osebrvable<R>}
      */
 
     getPv(lat:number, lon:number, system_capacity:number, tilt: number, azimuth: number, module_type: number, array_type:number ){
@@ -42,6 +42,7 @@ export class PVService {
         params.set("losses", "10");
         params.set("tilt", tilt.toString());
         params.set("azimuth", azimuth.toString());
+        params.set("dataset", "intl");
         params.set("system_capacity", system_capacity.toString());
         let requestOptions = new RequestOptions();
         return this.http.get('https://developer.nrel.gov/api/pvwatts/v5.json', {search:params} )

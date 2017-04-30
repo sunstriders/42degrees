@@ -39,11 +39,13 @@ import { Md2DatepickerModule }  from 'md2-datepicker';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
+import {PVService} from "./apiService";
 
 // Application wide providers
 const APP_PROVIDERS = [
     ...APP_RESOLVER_PROVIDERS,
-    AppState
+    AppState,
+    PVService,
 ];
 
 type StoreType = {
@@ -62,7 +64,7 @@ type StoreType = {
         AboutComponent,
         HomeComponent,
         NoContentComponent,
-        XLargeDirective
+        XLargeDirective,
     ],
     imports: [ // import Angular's modules
         BrowserModule,

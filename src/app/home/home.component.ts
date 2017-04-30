@@ -1,10 +1,12 @@
 import {
-  Component,
+  Component, Inject,
   OnInit
 } from '@angular/core';
 import { AppState } from '../app.service';
 import { Title } from './title';
 import { XLargeDirective } from './x-large';
+import {PVService} from "../apiService";
+
 @Component({
   // The selector is what angular internally uses
   // for `document.querySelectorAll(selector)` in our index.html
@@ -20,16 +22,18 @@ import { XLargeDirective } from './x-large';
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
-  public lat: number = 51.678418;
-  public lng: number = 7.809007;
+  public lat: number = 53.66670708625179;
+  public lng: number = 23.895263671875;
   public planet: String;
   public collectorType: String;
-  // Set our default values
+
+    // Set our default values
   public localState = { value: '' };
   // TypeScript public modifiers
   constructor(
     public appState: AppState,
-    public title: Title
+    public title: Title,
+    private pvService: PVService,
   ) {}
 
   public ngOnInit() {
@@ -41,6 +45,13 @@ export class HomeComponent implements OnInit {
     console.log('submitState', value);
     this.appState.set('value', value);
     this.localState.value = '';
+  }
+
+  public calculate() {
+    const result = this.pvService.getPv(this.lat, this.lng, 20, 20, 20, 1, 1);
+    result.subscribe((response: any) => {
+      console.log(response);
+    });
   }
 
   public mapClicked($event: any ) {
