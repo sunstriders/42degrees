@@ -1,5 +1,5 @@
 import {
-    Component, Inject,
+    Component,
     OnInit
 } from '@angular/core';
 import { AppState } from '../app.service';
@@ -26,14 +26,14 @@ export class HomeComponent implements OnInit {
     public lat: number = 53.66670708625179;
     public lng: number = 23.895263671875;
     public planet: String;
-    public collectorType: String;
-    public azimuth: number = -1;
-    public attitude: number = -1;
-    public date: Date;
+    public collectorType: number = 0;
+    public azimuth: number = 45;
+    public attitude: number = 45;
+    public date: Date = new Date();
     public moduleNumber = 0;
     public selectModule:SelectModule = new SelectModule();
     public energy: number = null;
-
+    public loading: boolean = false;
     // Set our default values
     public localState = {value: ''};
     // TypeScript public modifiers
@@ -53,13 +53,26 @@ export class HomeComponent implements OnInit {
     }
 
     public calculate() {
-        const result = this.pvService.getPv(this.lat, this.lng, 20, 20, 20, this.moduleNumber, 1);
+        this.loading = true;
+        const result = this.pvService.getPv(this.lat,
+            this.lng,
+            20,
+            this.attitude,
+            this.azimuth,
+            1,
+            this.collectorType);
         if (!this.validateInput()) {
             return;
         }
         result.subscribe((response: any) => {
-            console.log(response);
             this.energy = this.pvService.getEnergyForDay(response, this.date);
+            this.loading = false;
+            setTimeout( () => {
+                const element = document.querySelector('#result');
+                if (element) {
+                    element.scrollIntoView(element);
+                }
+            }, 100);
         });
     }
 
