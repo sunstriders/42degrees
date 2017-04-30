@@ -3,8 +3,8 @@ import {
   OnInit
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {Todo} from './todos';
-import {MyTodo} from "./mytodos";
+import {Todo} from '../todos';
+import {MyTodo} from '../mytodos';
 import {MdDialog, MdDialogRef} from '@angular/material';
 
 @Component({
@@ -15,27 +15,29 @@ import {MdDialog, MdDialogRef} from '@angular/material';
 })
 export class AboutComponent implements OnInit {
 
-    public toDos: Array<Todo> = [
-        new Todo("fen", 30),
-        new Todo("plita", 50),
-        new Todo("fen", 30),
-        new Todo("plita", 50),
-        new Todo("fen", 30),
-        new Todo("plita", 50),
-        new Todo("fen", 30),
-        new Todo("plita", 50),
-        new Todo("fen", 30),
-        new Todo("plita", 50),
+    public toDos: Todo[] = [
+        new Todo('fen', 30),
+        new Todo('plita', 50),
+        new Todo('fen', 30),
+        new Todo('plita', 50),
+        new Todo('fen', 30),
+        new Todo('plita', 50),
+        new Todo('fen', 30),
+        new Todo('plita', 50),
+        new Todo('fen', 30),
+        new Todo('plita', 50),
     ];
-    public myTodos: Array<MyTodo> = new Array(0);
+    public myTodos: MyTodo[] = new Array(0);
     public usedEnergy: number = 0;
     public remainEnergy: number = 1500;
+
   constructor(
     public route: ActivatedRoute,
     public dialog: MdDialog
   ) {}
 
     public ngOnInit() {
+      // ignored
     };
 
     public addTodo(todo: Todo) {
