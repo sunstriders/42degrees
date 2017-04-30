@@ -61,6 +61,15 @@
         </md-select>
     </div>
 
+    <p>Input Solar Panel Square</p>
+    <div style="margin: auto">
+        <md-input-container>
+            <input mdInput placeholder="Battery Square" [(ngModel)] = "square"/>
+            <md-hint align="end">m^2</md-hint>
+        </md-input-container>
+    </div>
+
+
     <h4>Choose Date</h4>
 
     <md2-datepicker style="margin: auto; width:500px;" [(ngModel)]="date"></md2-datepicker>
