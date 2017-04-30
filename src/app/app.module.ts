@@ -38,7 +38,7 @@ import { Md2DatepickerModule }  from 'md2-datepicker';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
-import {PVService} from "./apiService";
+import { PVService } from './apiService';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -57,7 +57,7 @@ type StoreType = {
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
 @NgModule({
-    bootstrap: [ AppComponent ],
+    bootstrap: [AppComponent],
     declarations: [
         AppComponent,
         AboutComponent,
@@ -74,7 +74,7 @@ type StoreType = {
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyDYB_Hw9wzrZ20A2bQRPlgWUVvq7nLQCRE'
         }),
-        RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
+        RouterModule.forRoot(ROUTES, {useHash: true, preloadingStrategy: PreloadAllModules}),
         MaterializeModule,
     ],
     providers: [ // expose our Services and Providers into Angular's dependency injection
@@ -84,10 +84,9 @@ type StoreType = {
 })
 export class AppModule {
 
-    constructor(
-        public appRef: ApplicationRef,
-        public appState: AppState
-    ) {}
+    constructor(public appRef: ApplicationRef,
+                public appState: AppState) {
+    }
 
     public hmrOnInit(store: StoreType) {
         if (!store || !store.state) {
@@ -115,7 +114,7 @@ export class AppModule {
         // recreate root elements
         store.disposeOldHosts = createNewHosts(cmpLocation);
         // save input values
-        store.restoreInputValues  = createInputTransfer();
+        store.restoreInputValues = createInputTransfer();
         // remove styles
         removeNgStyles();
     }
