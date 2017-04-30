@@ -58,6 +58,14 @@
     <md-slider min="0" max="180" step="1" [(ngModel)]="attitude"></md-slider> {{attitude}}
     </div>
 
+    <div style="margin: auto;">
+        <md-select placeholder="Solar module" [(ngModel)]="moduleNumber">
+            <md-option *ngFor="let module of selectModule.modules" [value]="module.value">
+                {{ module.name }}
+            </md-option>
+        </md-select>
+    </div>
+
     <button md-raised-button md-large-button color="warn" style="margin-top: 70px; width: 160px !important; height: 60px; font-size:1.4em;" (click)="calculate()">Calculate</button>
 
     <div *ngIf="energy!=null">
