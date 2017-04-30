@@ -25,7 +25,7 @@
         <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
     </sebm-google-map>
 
-    <h4>Choose collector</h4>
+    <h4 id="chooseCollector">Choose collector</h4>
 
     <md-button-toggle-group #group="mdButtonToggleGroup" [(ngModel)]="collectorType">
         <md-button-toggle value="0">
@@ -58,8 +58,8 @@
 
     <button md-raised-button md-large-button color="warn" style="margin-top: 70px; width: 160px !important; height: 60px; font-size:1.4em;" (click)="calculate()">Calculate</button>
 
-    <div *ngIf="energy!=null">
+    <div *ngIf="energy!=null" id="result">
         <h4>You have {{energy|number:'1.2-2'}} kW of energy on {{date|date:'dd.MM.yyyy'}}</h4>
     </div>
+    <md-progress-spinner *ngIf="loading" style="margin:auto; position: fixed;top: 0;left: 0;bottom: 0; right: 0;" mode="indeterminate"></md-progress-spinner>
 </div>
-

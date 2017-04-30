@@ -1,5 +1,5 @@
 import {
-    Component, Inject,
+    Component,
     OnInit
 } from '@angular/core';
 import { AppState } from '../app.service';
@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
     public attitude: number = 45;
     public date: Date = new Date();
     public energy: number = null;
-
+    public loading: boolean = false;
     // Set our default values
     public localState = {value: ''};
     // TypeScript public modifiers
@@ -50,6 +50,7 @@ export class HomeComponent implements OnInit {
     }
 
     public calculate() {
+        this.loading = true;
         const result = this.pvService.getPv(this.lat,
             this.lng,
             20,
@@ -61,8 +62,14 @@ export class HomeComponent implements OnInit {
             return;
         }
         result.subscribe((response: any) => {
-            console.log(response);
             this.energy = this.pvService.getEnergyForDay(response, this.date);
+            this.loading = false;
+            setTimeout( () => {
+                const element = document.querySelector('#result');
+                if (element) {
+                    element.scrollIntoView(element);
+                }
+            }, 100);
         });
     }
 
