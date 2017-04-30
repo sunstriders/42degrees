@@ -49,8 +49,34 @@ export class PVService {
             .map((res:Response) => res.json());
     }
 
-    parseApi(){
-
+    getEnergyForDay(response:String, day:Date) {
+        // let response = '{ "outputs": { "poa": [0, 0, 0, 0, 0, 0, 0, 54.228, 249.063, 297.984, 234.743, 412.297, 439.443, 855.346, 507.062, 379.984, 108.253, 0, 0, 0, 0, 0, 0, 0, 0]}}';
+        let json = JSON.parse(response);
+        let radiance = json.outputs.poa;
+        let days = this.chunkArray(radiance, 24);
+        let dayNumber = this.getDayOfYear(day);
+        return this.calculateDayEnergy(days[dayNumber]);
     }
 
+
+    getDayOfYear(date: Date):number{
+        let start = new Date(date.getFullYear(), 0, 0);
+        let diff = date - start;
+        let oneDay = 1000 * 60 * 60 * 24;
+        return Math.floor(diff / oneDay);
+    }
+
+    calculateDayEnergy(energyPerHours:String):number{
+        let numbersArray = JSON.parse(energyPerHours);
+        let convertedToNumbers = numbersArray.map(Number);
+        return convertedToNumbers.reduce((a, b) => a + b, 0)
+    }
+
+    chunkArray(arr, chunkSize):Array {
+        let groups = [], i;
+        for (i = 0; i < arr.length; i += chunkSize) {
+            groups.push(arr.slice(i, i + chunkSize));
+        }
+        return groups;
+    }
 }
