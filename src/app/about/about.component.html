@@ -1,0 +1,67 @@
+<div class="container">
+    <h5 style="display: inline">Remain energy </h5><h5 style="display: inline">{{remainEnergy| number:'1.2-2'}} watts</h5><h5 style="display: inline">, used energy </h5><h5 style="display: inline">{{usedEnergy| number:'1.2-2'}}</h5><h5 style="display: inline">, for day.</h5>
+</div>
+<div>
+    <div class="container row">
+        <table class="table table-striped col s5" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5">
+            <thead>
+            <tr>
+                <th style="width: 80%">
+                    <mfDefaultSorter by="name">Name</mfDefaultSorter>
+                </th>
+                <th style="width: 20%">
+                    <mfDefaultSorter by="watts">Watts</mfDefaultSorter>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr style="cursor: pointer;" *ngFor="let item of toDos" (click)="addTodo(item)">
+                <td>{{item.name}}</td>
+                <td>{{item.watts}}</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="4">
+                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+        <div class="col s1"></div>
+        <table class="table table-striped col s5" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5">
+            <thead>
+            <tr>
+                <th style="width: 50%">
+                    <mfDefaultSorter by="name">Name</mfDefaultSorter>
+                </th>
+                <th style="width: 22%">
+                    <mfDefaultSorter by="minutes">Minutes</mfDefaultSorter>
+                </th>
+                <th style="width: 22%">
+                    <mfDefaultSorter by="watts">Watts</mfDefaultSorter>
+                </th>
+                <th style="width: 6%">
+                    <mfDefaultSorter>Remove</mfDefaultSorter>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of myTodos">
+                <td>{{item.name}}</td>
+                <td><input style="margin:0;border-bottom: none; height: inherit;" [(ngModel)]="item.minutes"
+                           (change)="changeMyTodo(item)"></td>
+                <td>{{item.sumWatts| number:'1.2-2'}}</td>
+                <td style="float: right; color: red; cursor: pointer;" (click)="deleteTodo(item)">x</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="4">
+                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

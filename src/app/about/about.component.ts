@@ -3,74 +3,64 @@ import {
   OnInit
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import {Todo} from './todos';
+import {MyTodo} from "./mytodos";
+import {MdDialog, MdDialogRef} from '@angular/material';
 
 @Component({
   selector: 'about',
   styles: [`
   `],
-  template: `
-    <h1>About</h1>
-    <div>
-        <md-slider min="1" max="5" step="0.5" [(ngModel)]="slider"></md-slider>
-        <md2-datepicker [(ngModel)]="date"></md2-datepicker>
-        <md-card>
-            <button md-button>All</button>
-            <button md-raised-button>Of</button>
-            <button md-raised-button color="primary">The</button>
-            <button md-raised-button color="accent">Buttons</button>
-        </md-card>
-    </div>
-    <div>
-      For hot module reloading run
-      <pre>npm run start:hmr</pre>
-    </div>
-    <div>
-      <h3>
-        patrick@AngularClass.com
-      </h3>
-    </div>
-    <pre>this.localState = {{ localState | json }}</pre>
-  `
+    templateUrl: './about.component.html'
 })
 export class AboutComponent implements OnInit {
 
-  public localState: any;
-  public slider: number;
-  public date: Date;
+    public toDos: Array<Todo> = [
+        new Todo("fen", 30),
+        new Todo("plita", 50),
+        new Todo("fen", 30),
+        new Todo("plita", 50),
+        new Todo("fen", 30),
+        new Todo("plita", 50),
+        new Todo("fen", 30),
+        new Todo("plita", 50),
+        new Todo("fen", 30),
+        new Todo("plita", 50),
+    ];
+    public myTodos: Array<MyTodo> = new Array(0);
+    public usedEnergy: number = 0;
+    public remainEnergy: number = 1500;
   constructor(
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    public dialog: MdDialog
   ) {}
 
-  public ngOnInit() {
-    this.slider = 2;
-    this.date = new Date();
-    this.route
-      .data
-      .subscribe((data: any) => {
-        // your resolved data from route
-        this.localState = data.yourData;
-      });
+    public ngOnInit() {
+    };
 
-    console.log('hello `About` component');
-    // static data that is bundled
-    // var mockData = require('assets/mock-data/mock-data.json');
-    // console.log('mockData', mockData);
-    // if you're working with mock data you can also use http.get('assets/mock-data/mock-data.json')
-    this.asyncDataWithWebpack();
-  }
-  private asyncDataWithWebpack() {
-    // you can also async load mock data with 'es6-promise-loader'
-    // you would do this if you don't want the mock-data bundled
-    // remember that 'es6-promise-loader' is a promise
-    setTimeout(() => {
-
-      System.import('../../assets/mock-data/mock-data.json')
-        .then((json) => {
-          console.log('async mockData', json);
-          this.localState = json;
-        });
-
-    });
+    public addTodo(todo: Todo) {
+        let myTodo = new MyTodo(todo, 10);
+        this.myTodos.push(myTodo);
+        this.usedEnergy = myTodo.sumWatts + this.usedEnergy;
+        this.remainEnergy = this.remainEnergy - myTodo.sumWatts;
   }
 
+    public deleteTodo(todo: MyTodo) {
+        let index: number = this.myTodos.indexOf(todo);
+        if (index !== -1) {
+            this.myTodos.splice(index, 1);
+        }
+        this.usedEnergy = this.usedEnergy - todo.sumWatts;
+        this.remainEnergy = this.remainEnergy + todo.sumWatts;
+    }
+
+    public changeMyTodo(todo: MyTodo) {
+        let index: number = this.myTodos.indexOf(todo);
+        this.usedEnergy = this.usedEnergy - todo.sumWatts;
+        this.remainEnergy = this.remainEnergy + todo.sumWatts;
+        todo.sumWatts = todo.watts / 60 * todo.minutes;
+        this.myTodos[index] = todo;
+        this.usedEnergy = this.usedEnergy + todo.sumWatts;
+        this.remainEnergy = this.remainEnergy - todo.sumWatts;
+    }
 }

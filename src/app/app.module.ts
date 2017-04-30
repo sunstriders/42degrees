@@ -35,6 +35,7 @@ import { NoContentComponent } from './no-content';
 import { MaterializeModule } from 'angular2-materialize';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { Md2DatepickerModule }  from 'md2-datepicker';
+import { DataTableModule } from 'angular2-datatable';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
@@ -76,6 +77,7 @@ type StoreType = {
         }),
         RouterModule.forRoot(ROUTES, {useHash: true, preloadingStrategy: PreloadAllModules}),
         MaterializeModule,
+        DataTableModule
     ],
     providers: [ // expose our Services and Providers into Angular's dependency injection
         ENV_PROVIDERS,
