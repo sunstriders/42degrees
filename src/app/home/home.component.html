@@ -21,7 +21,7 @@
     </md-button-toggle-group>
 
     <h4>Choose your location</h4>
-    <sebm-google-map [latitude]="lat" [longitude]="lng" (mapClick)="mapClicked($event)">
+    <sebm-google-map [latitude]="lat" [longitude]="lng" (mapClick)="mapClicked($event)" >
         <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
     </sebm-google-map>
 

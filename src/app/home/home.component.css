@@ -5,3 +5,7 @@
 .mat-button-toggle-group {
     box-shadow: none !important;
 }
+
+.md2-datepicker-wrapper {
+    width: 450px !important;
+}

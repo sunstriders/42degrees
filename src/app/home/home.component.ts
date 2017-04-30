@@ -6,7 +6,7 @@ import { AppState } from '../app.service';
 import { Title } from './title';
 import { XLargeDirective } from './x-large';
 import { PVService } from '../apiService';
-import {SelectModule} from "./solarModule";
+import { SelectModule } from './solarModule';
 
 @Component({
     // The selector is what angular internally uses
@@ -25,14 +25,14 @@ import {SelectModule} from "./solarModule";
 export class HomeComponent implements OnInit {
     public lat: number = 53.66670708625179;
     public lng: number = 23.895263671875;
-    public planet: String;
+    public planet: String = 'earth';
     public collectorType: number = 0;
     public azimuth: number = 45;
     public attitude: number = 45;
     public date: Date = new Date();
     public square:number = 1;
     public moduleNumber = 0;
-    public selectModule:SelectModule = new SelectModule();
+    public selectModule: SelectModule = new SelectModule();
     public energy: number = null;
     public loading: boolean = false;
     // Set our default values
