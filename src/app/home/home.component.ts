@@ -31,8 +31,8 @@ export class HomeComponent implements OnInit {
     public lng: number = 23.895263671875;
     public planet: String = 'earth';
     public collectorType: number = 0;
-    public azimuth: number = 45;
-    public attitude: number = 45;
+    public azimuth: number = 42;
+    public attitude: number = 42;
     public date: Date = new Date();
     public square: number = 1;
     public moduleNumber = 0;
