@@ -29,13 +29,13 @@
 
     <md-button-toggle-group #group="mdButtonToggleGroup" [(ngModel)]="collectorType">
         <md-button-toggle value="0">
-        <img (click)="choosedAngles(0,0)" style="height: 15em; width: 15em;" src="http://www.iowaenergycenter.org/wp-content/themes/iowa-energy-center/images/fixed-collector.svg"/>
+        <img (click)="choosedAngles(45,45)" style="height: 15em; width: 15em;" src="http://www.iowaenergycenter.org/wp-content/themes/iowa-energy-center/images/fixed-collector.svg"/>
     </md-button-toggle>
         <md-button-toggle value="2">
-            <img (click)="choosedAngles(0,-1)" style="height: 15em; width: 15em;" src="http://www.iowaenergycenter.org/wp-content/themes/iowa-energy-center/images/north-south-collector.svg"/>
+            <img (click)="choosedAngles(30,-1)" style="height: 15em; width: 15em;" src="http://www.iowaenergycenter.org/wp-content/themes/iowa-energy-center/images/north-south-collector.svg"/>
         </md-button-toggle>
         <md-button-toggle value="3">
-            <img (click)="choosedAngles(-1,0)" style="height: 15em; width: 15em;" src="http://www.iowaenergycenter.org/wp-content/themes/iowa-energy-center/images/east-west-collector.svg"/>
+            <img (click)="choosedAngles(-1,30)" style="height: 15em; width: 15em;" src="http://www.iowaenergycenter.org/wp-content/themes/iowa-energy-center/images/east-west-collector.svg"/>
         </md-button-toggle>
         <md-button-toggle value="4">
             <img (click)="choosedAngles(-1,-1)" style="height: 15em; width: 15em;" src="http://www.iowaenergycenter.org/wp-content/themes/iowa-energy-center/images/2-axis-collector.svg"/>
@@ -48,8 +48,8 @@
     </span>
 
     <span *ngIf="attitude>-1">
-        <h5>Attitude</h5>
-        <md-slider min="0" max="180" step="1" [(ngModel)]="attitude"></md-slider> {{attitude}}
+        <h5>Tilt</h5>
+        <md-slider min="0" max="90" step="1" [(ngModel)]="attitude"></md-slider> {{attitude}}
     </span>
 
     <h4>Choose Date</h4>
